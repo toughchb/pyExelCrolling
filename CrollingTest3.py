@@ -15,8 +15,11 @@ print(len(tableList))
 # 엑셀파일 열기
 excel_file = openpyxl.load_workbook('Input.xlsx')
 
-excel_sheet1 = excel_file.get_sheet_by_name('Sheet1')
-excel_sheet2 = excel_file.get_sheet_by_name('Sheet2')
+#excel_sheet1 = excel_file.get_sheet_by_name('Sheet1')
+excel_sheet1 = excel_file['Sheet1']
+
+#excel_sheet2 = excel_file.get_sheet_by_name('Sheet2')
+excel_sheet2 = excel_file['Sheet2']
 
 PrimaryKeys = []
 pKey = ''
