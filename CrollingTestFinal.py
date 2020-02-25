@@ -53,12 +53,12 @@ def main():
 
             if ');' in outline:  # 마지막 줄
                 if outline.find('ETL_DEL_YN CHAR(1),') != -1:
-                    outline = outline.replace('ETL_DEL_YN CHAR(1),', 'ETL_DEL_YN CHAR(1) DEFAULT ‘N’ NOT NULL, ')
+                    outline = outline.replace('ETL_DEL_YN CHAR(1),', 'ETL_DEL_YN CHAR(1) DEFAULT \'N\' NOT NULL, ')
                 if outline.find('ETL_LOAD_DT DATETIME') != -1:
                     if len(pKey) != 0:
                         outline = outline.replace('ETL_LOAD_DT DATETIME);',
                                                   'ETL_LOAD_DT DATETIME DEFAULT CURRENT TIMESTAMP NOT NULL, ')
-                        outline = outline + 'PRIMARY KEY(' + pKey + ',ETL_DEL_YN,ETL_LOAD_DT);\n);'
+                        outline = outline + 'PRIMARY KEY(' + pKey + ',ETL_DEL_YN,ETL_LOAD_DT)\n);'
                     else:
                         no_primary_keys.append(t_key)# Sheet2에 없는 key 값 저장
                         outline = outline.replace('ETL_LOAD_DT DATETIME);',
